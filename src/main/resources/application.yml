@@ -1,0 +1,30 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: update
+        show_sql: true
+      javax:
+        persistence:
+          validation:
+            mode: none
+  datasource:
+    url: jdbc:postgresql://localhost:5432/university3
+    username: postgres
+    password: Kkoc0312
+
+
+
+
+
+#  spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+#  spring.jpa.hibernate.ddl-auto=update
+#  spring.jpa.hibernate.show-sql=true
+#  spring.datasource.url=jdbc:postgresql://localhost:5432/IntegrationOpenAi
+#  spring.datasource.username=postgres
+#  spring.datasource.password=Kkoc0312
+server:
+  port: 8085
+#  spring.jpa.properties.javax.persistence.validation.mode = none

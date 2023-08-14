@@ -1,4 +1,4 @@
-package com.system.managementuniversity;
+package com.system.management.university;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
