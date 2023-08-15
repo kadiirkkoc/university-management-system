@@ -8,7 +8,7 @@ public interface FacultyService {
 
     List<FacultyDTO> getAll();
 
-    FacultyDTO getFacultyById(Long id);
+    FacultyDTO getById(Long id);
 
     void addFaculty(FacultyDTO facultyDTO);
 

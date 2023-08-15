@@ -26,5 +26,5 @@ spring:
 #  spring.datasource.username=postgres
 #  spring.datasource.password=Kkoc0312
 server:
-  port: 8085
+  port: 8089
 #  spring.jpa.properties.javax.persistence.validation.mode = none

@@ -1,6 +1,7 @@
 package com.system.management.university.service.business;
 
 import com.system.management.university.dtos.DepartmentDTO;
+import com.system.management.university.exceptions.NotFoundExceptions;
 import com.system.management.university.mapper.ModelMapperService;
 import com.system.management.university.model.Department;
 import com.system.management.university.model.Faculty;
@@ -56,11 +57,23 @@ public class DepartmentManager implements DepartmentService {
 
     @Override
     public void update(Long id , DepartmentDTO departmentDTO) {
-        Department department = modelMapperService.forRequest().map(departmentDTO,Department.class);
+        Optional<Department> departmentOptional = departmentRepository.findById(id);
+        if (departmentOptional.isPresent()) {
+            Department department = departmentOptional.get();
+            department.setName(departmentDTO.getName());
+        }
+        else {
+            throw new NotFoundExceptions("department not found with id you provide");
+        }
     }
 
     @Override
     public void delete(Long id) {
-
+        if (departmentRepository.findById(id).isPresent()){
+            departmentRepository.deleteById(id);
+        }
+        else {
+            throw new NotFoundExceptions("department not found with id you provide");
+        }
     }
 }
