@@ -27,11 +27,9 @@ public class Lesson {
     @ManyToMany
     private Set<Student> students = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "lesson_departments",
-        joinColumns = @JoinColumn(name = "lesson_id"),
-        inverseJoinColumns = @JoinColumn(name = "deparment_id"))
-    private List<Department> departments;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
 
 }

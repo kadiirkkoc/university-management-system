@@ -13,4 +13,10 @@ public class GlobalExceptionsHandler {
         ErrorResponse errorDetails = new ErrorResponse(ex.getMessage());
         return new ResponseEntity<>(errorDetails,HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler({ResourceAlreadyExistsException.class})
+    public ResponseEntity<Object> handleResourceAlreadyExistsException(ResourceAlreadyExistsException ex){
+        ErrorResponse errorDetails = new ErrorResponse(ex.getMessage());
+        return new ResponseEntity<>(errorDetails,HttpStatus.BAD_REQUEST);
+    }
 }

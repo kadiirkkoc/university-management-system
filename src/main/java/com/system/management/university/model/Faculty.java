@@ -20,6 +20,6 @@ public class Faculty {
     @Column(name = "campus")
     private String campus;
 
-    @OneToMany(mappedBy = "faculty")
-    private Set<Department> departments = new HashSet<>();
+    @OneToMany(mappedBy = "faculty" , cascade = CascadeType.ALL )
+    private Set<Department> departments;
 }

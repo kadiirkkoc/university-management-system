@@ -24,7 +24,7 @@ public class Department {
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "department")
     private List<Lesson> lessons;
 
     @OneToMany(mappedBy = "department")

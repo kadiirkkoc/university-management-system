@@ -4,6 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/management/university/student/")
+@RequestMapping("/management/university/student")
 public class StudentController {
 }
