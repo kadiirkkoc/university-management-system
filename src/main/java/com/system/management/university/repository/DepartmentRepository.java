@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface DepartmentRepository extends CrudRepository<Department,Long> {
+public interface DepartmentRepository extends JpaRepository<Department,Long> {
     Set<Department> findAllByFacultyId(Long id);
 }

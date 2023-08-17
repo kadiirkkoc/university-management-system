@@ -9,10 +9,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DepartmentDTO {
-        private Long id;
-        private String name;
-        private Long facultyId;
-        private List<LessonDTO> lessons;
-        private List<InstructorDTO> instructors;
+public class InstructorDTO {
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private Long departmentId;
+    private List<LessonDTO> lessons;
 }

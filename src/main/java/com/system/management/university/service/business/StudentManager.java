@@ -1,6 +1,6 @@
 package com.system.management.university.service.business;
 
-import com.system.management.university.dtos.StudentDto;
+import com.system.management.university.dtos.StudentDTO;
 import com.system.management.university.model.Department;
 import com.system.management.university.model.Student;
 import com.system.management.university.repository.DepartmentRepository;
@@ -22,7 +22,7 @@ public class StudentManager implements StudentService {
         this.departmentRepository = departmentRepository;
     }
 
-    public void add(StudentDto studentDto){
+    public void add(StudentDTO studentDto){
         List<Student> students = new ArrayList<>();
         Optional<Department> department = departmentRepository.findById(1L);
         Student student = new Student();

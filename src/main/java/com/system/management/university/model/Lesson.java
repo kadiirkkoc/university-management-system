@@ -25,7 +25,7 @@ public class Lesson {
     private String semester;
 
     @ManyToMany
-    private Set<Student> students = new HashSet<>();
+    private List<Student> students;
 
     @ManyToOne
     @JoinColumn(name = "department_id")

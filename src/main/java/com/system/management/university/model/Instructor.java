@@ -33,4 +33,7 @@ public class Instructor {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+    @OneToMany(mappedBy = "instructor" , cascade = CascadeType.ALL)
+    private List<Lesson> lessons;
 }

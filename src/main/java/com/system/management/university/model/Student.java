@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -36,7 +37,7 @@ public class Student {
     @JoinTable(name = "student_lessons",
                 joinColumns = @JoinColumn(name = "student_id"),
                 inverseJoinColumns = @JoinColumn(name = "lesson_id"))
-    private Set<Lesson> lessons = new HashSet<>();
+    private List<Lesson> lessons;
 
     @ManyToOne
     @JoinColumn(name = "department_id")
