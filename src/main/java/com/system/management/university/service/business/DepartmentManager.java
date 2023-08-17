@@ -1,6 +1,7 @@
 package com.system.management.university.service.business;
 
 import com.system.management.university.dtos.DepartmentDTO;
+import com.system.management.university.dtos.FacultyDTO;
 import com.system.management.university.exceptions.NotFoundExceptions;
 import com.system.management.university.mapper.ModelMapperService;
 import com.system.management.university.model.Department;
@@ -8,6 +9,7 @@ import com.system.management.university.model.Faculty;
 import com.system.management.university.repository.DepartmentRepository;
 import com.system.management.university.repository.FacultyRepository;
 import com.system.management.university.service.abstracts.DepartmentService;
+import lombok.EqualsAndHashCode;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -36,8 +38,8 @@ public class DepartmentManager implements DepartmentService {
     }
 
     @Override
-    public DepartmentDTO getById(Long id) {
-        Optional<Department> department = departmentRepository.findById(id);
+        public DepartmentDTO getById(Long id) {
+            Optional<Department> department = departmentRepository.findById(id);
         DepartmentDTO departmentById = modelMapperService.forResponse().map(department,DepartmentDTO.class);
         return departmentById;
     }

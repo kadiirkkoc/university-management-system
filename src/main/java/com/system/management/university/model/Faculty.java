@@ -1,9 +1,10 @@
 package com.system.management.university.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -20,6 +21,8 @@ public class Faculty {
     @Column(name = "campus")
     private String campus;
 
+    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "faculty" , cascade = CascadeType.ALL )
     private Set<Department> departments;
 }

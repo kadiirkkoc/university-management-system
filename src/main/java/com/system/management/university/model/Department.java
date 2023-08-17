@@ -1,5 +1,7 @@
 package com.system.management.university.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,6 +24,7 @@ public class Department {
 
     @ManyToOne
     @JoinColumn(name = "faculty_id")
+    @JsonIgnore
     private Faculty faculty;
 
     @OneToMany(mappedBy = "department")
