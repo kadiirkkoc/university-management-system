@@ -1,5 +1,6 @@
 package com.system.management.university.service.business;
 
+import com.system.management.university.dtos.DepartmentDTO;
 import com.system.management.university.dtos.InstructorDTO;
 import com.system.management.university.dtos.LessonDTO;
 import com.system.management.university.exceptions.NotFoundExceptions;
@@ -25,13 +26,10 @@ public class InstructorManager implements InstructorService {
     private final LessonRepository lessonRepository;
     private final ModelMapperService modelMapperService;
 
-    private final DepartmentRepository departmentRepository;
-
     public InstructorManager(InstructorRepository instructorRepository, LessonRepository lessonRepository, ModelMapperService modelMapperService, DepartmentRepository departmentRepository) {
         this.instructorRepository = instructorRepository;
         this.lessonRepository = lessonRepository;
         this.modelMapperService = modelMapperService;
-        this.departmentRepository = departmentRepository;
     }
 
     @Override
@@ -47,11 +45,8 @@ public class InstructorManager implements InstructorService {
             instructorDTO.setFirstName(instructor.getFirstName());
             instructorDTO.setLastName(instructor.getLastName());
             instructorDTO.setEmail(instructor.getEmail());
-            instructorDTO.setDepartmentId(instructor.getDepartment().getId());
             List<Lesson> lessons = lessonRepository.findAllByInstructorId(instructor.getId());
-            instructorDTO.setLessons(
-                    lessons.stream().map(lesson -> modelMapperService.forResponse().map(lesson, LessonDTO.class)).collect(Collectors.toList())
-            );
+            instructorDTO.setLessons(lessons.stream().map(lesson -> modelMapperService.forResponse().map(lesson,LessonDTO.class)).collect(Collectors.toList()));
             instructorDTOS.add(instructorDTO);
         });
         return instructorDTOS;
@@ -66,25 +61,30 @@ public class InstructorManager implements InstructorService {
 
     @Override
     public void add (InstructorDTO instructorDTO) {
-        Optional<Department> department = departmentRepository.findById(instructorDTO.getDepartmentId());
-        Instructor instructor = modelMapperService.forRequest().map(instructorDTO,Instructor.class);
-        List<Instructor> instructors = new ArrayList<>();
-        instructors.add(instructor);
-        if (department.isPresent()){
-            department.get().setInstructors(instructors);
-            departmentRepository.save(department.get());
-        }
-        instructorRepository.save(instructor);
+        List<Instructor> instructors = instructorRepository.findAll();
 
+        Instructor instructor = new Instructor();
+        instructor.setFirstName(instructorDTO.getFirstName());
+        instructor.setLastName(instructorDTO.getLastName());
+        instructor.setEmail(instructorDTO.getEmail());
+        instructorRepository.save(instructor);
     }
 
     @Override
     public void update(Long id, InstructorDTO instructorDTO) {
-
+        Optional<Instructor> instructorOptional = instructorRepository.findById(id);
+        if (!instructorOptional.isPresent()){
+            throw new NotFoundExceptions("instructor not found with id you provide");
+        }
+        Instructor instructor = instructorOptional.get();
+        instructor.setEmail(instructorDTO.getEmail());
+        instructorRepository.save(instructor);
     }
 
     @Override
     public void delete(Long id) {
+
+
 
     }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Set;
 
@@ -21,8 +22,8 @@ public class Faculty {
     @Column(name = "campus")
     private String campus;
 
-    @JsonManagedReference
     @JsonIgnore
     @OneToMany(mappedBy = "faculty" , cascade = CascadeType.ALL )
+    @EqualsAndHashCode.Exclude
     private Set<Department> departments;
 }

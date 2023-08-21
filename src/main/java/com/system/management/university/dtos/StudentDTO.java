@@ -12,8 +12,11 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentDTO {
-    private String name;
+    private String firstName;
     private String lastName;
+    private String email;
+    private String semester;
     private Long lessonId;
+    private Long departmentId;
     private List<LessonDTO> lessons;
 }

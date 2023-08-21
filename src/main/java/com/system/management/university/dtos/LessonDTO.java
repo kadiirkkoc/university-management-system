@@ -18,8 +18,6 @@ public class LessonDTO {
     private double credit;
     private String semester;
     private Long instructorId;
-    private Long studentId;
+    private Long departmentId;
     private List<StudentDTO> students;
-
-
 }

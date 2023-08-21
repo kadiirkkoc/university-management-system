@@ -3,9 +3,7 @@ package com.system.management.university.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
@@ -29,10 +27,6 @@ public class Instructor {
 
     @Column(name = "phone_number")
     private String phoneNumber;
-
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
 
     @OneToMany(mappedBy = "instructor" , cascade = CascadeType.ALL)
     private List<Lesson> lessons;

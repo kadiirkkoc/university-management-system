@@ -28,16 +28,13 @@ public class Student {
     private String email;
 
     @Column(name = "year")
-    private String year;
+    private String semester;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @ManyToMany
-    @JoinTable(name = "student_lessons",
-                joinColumns = @JoinColumn(name = "student_id"),
-                inverseJoinColumns = @JoinColumn(name = "lesson_id"))
-    private List<Lesson> lessons;
+    @ManyToMany(mappedBy = "students")
+    private List<Lesson>lessons;
 
     @ManyToOne
     @JoinColumn(name = "department_id")

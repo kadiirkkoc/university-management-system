@@ -14,5 +14,4 @@ public class DepartmentDTO {
         private String name;
         private Long facultyId;
         private List<LessonDTO> lessons;
-        private List<InstructorDTO> instructors;
 }
