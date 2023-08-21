@@ -1,9 +1,9 @@
 package com.system.management.university.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
@@ -20,16 +20,15 @@ public class Department {
     private String name;
 
     @OneToMany(mappedBy = "department")
-    private List<Student>students;
+    private List<Student> students;
 
     @ManyToOne
     @JoinColumn(name = "faculty_id")
     @JsonIgnore
+    @EqualsAndHashCode.Exclude
     private Faculty faculty;
 
     @OneToMany(mappedBy = "department")
     private List<Lesson> lessons;
 
-    @OneToMany(mappedBy = "department")
-    private List<Instructor> instructors;
 }

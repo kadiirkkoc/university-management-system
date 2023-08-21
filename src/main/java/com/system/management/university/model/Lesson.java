@@ -24,8 +24,16 @@ public class Lesson {
     @Column(name = "semester")
     private String semester;
 
-    @ManyToMany
+    @ManyToMany()
+    @JoinTable(
+            name = "student_lesson",
+            joinColumns = @JoinColumn(name = "lesson_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> students;
+
+    @ManyToOne
+    @JoinColumn(name = "instructor_id")
+    private Instructor instructor;
 
     @ManyToOne
     @JoinColumn(name = "department_id")

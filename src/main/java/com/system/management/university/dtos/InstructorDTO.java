@@ -1,5 +1,6 @@
 package com.system.management.university.dtos;
 
+import com.system.management.university.model.Lesson;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,5 @@ public class InstructorDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private Long departmentId;
-    private List<LessonDTO> lessons;
+    private List<LessonDTO>lessons;
 }

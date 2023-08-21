@@ -8,5 +8,4 @@ import java.util.List;
 
 @Repository
 public interface InstructorRepository extends JpaRepository<Instructor,Long> {
-    List<Instructor> findAllByDepartmentId(Long id);
 }
